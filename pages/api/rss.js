@@ -78,7 +78,7 @@ async function generateRssContent() {
 
   for (const post of latestPosts) {
     feed.addItem({
-      title: post.title,
+      title: post.title || '未命名',
       link: `${LINK}/${post.slug}`,
       description: post.summary || '',
       date: new Date(post?.publishDay || post?.publishDate || Date.now())
@@ -130,7 +130,7 @@ export default async function handler(req, res) {
     res.setHeader('Content-Type', 'application/rss+xml; charset=utf-8')
     return res.status(200).send(rssCache.xml)
   } catch (error) {
-    console.error('[RSS API] Error generating feed:', error)
+    console.error('[RSS API] Error generating feed:', error.stack || error)
     return res.status(500).json({ message: 'Failed to generate RSS feed' })
   }
 }

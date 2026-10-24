@@ -205,6 +205,8 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   generateEtags: true,
+  // 关闭开发环境左下角的 Next.js 徽标浮层（生产构建本来就不显示）
+  devIndicators: false,
 
   // 构建优化
   swcMinify: true,
