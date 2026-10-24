@@ -7,7 +7,7 @@ const BLOG = {
   // 这里的 album 前缀会生成 /album 路径，读取后面对应的子库；不使用多语言。
   NOTION_PAGE_ID:
     process.env.NOTION_PAGE_ID ||
-    '02ab3b8678004aa69e9e415905ef32a5,album:dcc2d48b8d5283ceb7d4012b46ef9d84',
+    'e342d48b8d52839cb2260139795ea1e5,album:dcc2d48b8d5283ceb7d4012b46ef9d84',
   THEME: process.env.NEXT_PUBLIC_THEME || 'Movie_Aero', // 当前主题，在themes文件夹下可找到所有支持的主题；主题名称就是文件夹名，例如 claude,endspace,example,fukasawa,fuwari,gitbook,heo,hexo,landing,matery,medium,next,nobelium,plog,simple
   LANG: process.env.NEXT_PUBLIC_LANG || 'zh-CN', // e.g 'zh-CN','en-US'  see /lib/lang.js for more.
   SINCE: process.env.NEXT_PUBLIC_SINCE || 2021, // e.g if leave this empty, current year will be used.
