@@ -1,10 +1,11 @@
 import { SignOutButton } from '@clerk/nextjs'
+import { isClerkEnabled } from '@/lib/config/clerk'
 /**
  * 控制台登出按钮
  * @returns
  */
 export default function DashboardSignOutButton() {
-  const enableClerk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+  const enableClerk = isClerkEnabled()
   if (!enableClerk) {
     return null
   }

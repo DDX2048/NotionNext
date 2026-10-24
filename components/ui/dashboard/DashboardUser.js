@@ -1,10 +1,11 @@
 import { UserProfile } from '@clerk/nextjs'
+import { isClerkEnabled } from '@/lib/config/clerk'
 /**
  * 控制台用户账号面板
  * @returns
  */
 export default function DashboardUser() {
-  const enableClerk = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+  const enableClerk = isClerkEnabled()
   if (!enableClerk) {
     return null
   }

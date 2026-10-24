@@ -460,6 +460,16 @@ const nextConfig = {
     delete pages['/auth']
     return pages
   },
+  // Clerk 只在「公钥 + 服务端密钥」同时存在时才启用。
+  // 构建期算好并注入，服务端与客户端判断一致；部署平台残留单个 Clerk 变量时，
+  // 也不会再让 SSG 阶段拿不到 auth 上下文而构建失败。
+  env: {
+    NEXT_PUBLIC_CLERK_ENABLED:
+      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY &&
+      process.env.CLERK_SECRET_KEY
+        ? 'true'
+        : 'false'
+  },
   publicRuntimeConfig: {
     // 这里的配置既可以服务端获取到，也可以在浏览器端获取到
     THEMES: themes

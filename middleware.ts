@@ -1,6 +1,7 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 import { NextRequest, NextResponse } from 'next/server'
 import { checkStrIsNotionId, getLastPartOfUrl } from '@/lib/utils'
+import { isClerkEnabled } from '@/lib/config/clerk'
 import { idToUuid } from 'notion-utils'
 import BLOG from './blog.config'
 
@@ -63,7 +64,7 @@ const noAuthMiddleware = async (req: NextRequest, ev: any) => {
 /**
  * 鉴权中间件
  */
-const authMiddleware = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+const authMiddleware = isClerkEnabled()
   ? clerkMiddleware((auth, req) => {
       const { userId } = auth()
       // 处理 /dashboard 路由的登录保护
